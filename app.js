@@ -2,6 +2,23 @@ const bottomUnderIndicator = document.querySelector('.bottom-nav .underIndicator
 bottomUnderIndicator.style.left = `${document.querySelector('.bottom-nav .item.on').offsetLeft - 3}px`
 bottomUnderIndicator.style.width = `${document.querySelector('.bottom-nav .item.on').offsetWidth + 6}px`
 
+allowFullScreen = () => {
+    var element = document.querySelector("body");
+    
+    element.requestFullscreen()
+    .then(function() {
+        element.style.background = 'var(--bg)'
+    })
+    .catch(function(error) {
+        // element could not enter fullscreen mode
+        // error message
+        console.log(error.message);
+    });
+    setTimeout(() => {
+        document.querySelector('.first-page').style.display = 'none'
+    }, 300)
+}
+
 const pages = document.querySelectorAll('.pages')
 for (page of pages) {
     page.addEventListener('scroll', () => {
