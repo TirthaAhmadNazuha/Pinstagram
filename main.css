@@ -6,6 +6,10 @@
   border: 0;
 }
 
+html {
+  background: #fbfeff;
+}
+
 :root {
   --bglight: #fbfeff;
   --bgdark: #121415;

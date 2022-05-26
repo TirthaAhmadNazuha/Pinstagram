@@ -5,6 +5,9 @@
     padding: 0;
     border: 0;
 }
+html {
+    background: #fbfeff;
+}
 :root {
     --bglight: #fbfeff;
     --bgdark: #121415;
@@ -23,6 +26,7 @@ body {
     color: var(--color);
     overflow: hidden;
 }
+
 button {
     font: inherit;
     color: inherit;
