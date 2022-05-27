@@ -1,23 +1,11 @@
+
+
+
+
+
 const bottomUnderIndicator = document.querySelector('.bottom-nav .underIndicator')
 bottomUnderIndicator.style.left = `${document.querySelector('.bottom-nav .item.on').offsetLeft - 3}px`
 bottomUnderIndicator.style.width = `${document.querySelector('.bottom-nav .item.on').offsetWidth + 6}px`
-
-allowFullScreen = () => {
-    var element = document.querySelector("body");
-    
-    element.requestFullscreen()
-    .then(function() {
-        element.style.background = 'var(--bg)'
-    })
-    .catch(function(error) {
-        // element could not enter fullscreen mode
-        // error message
-        console.log(error.message);
-    });
-    setTimeout(() => {
-        document.querySelector('.first-page').style.display = 'none'
-    }, 300)
-}
 
 const pages = document.querySelectorAll('.pages')
 for (page of pages) {
@@ -46,3 +34,20 @@ let intervalLoadingGradient = 0
 //     }
 //     intervalLoadingGradient = 6000
 // }, intervalLoadingGradient)
+
+document.querySelector('.loading-page').addEventListener('scroll', () => {
+    if (document.fullscreenElement == null) {
+        document.querySelector('body').requestFullscreen()
+        .then(() => {
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
+    const full = document.querySelector('.loading-page .ele').offsetHeight
+    document.querySelector('.loading-page').style.filter = `opacity(${100 - ((document.querySelector('.loading-page').scrollTop / full) * 100)}%)`
+    if (document.querySelector('.loading-page').scrollTop == document.querySelector('.loading-page .ele').offsetHeight) {
+        document.querySelector('.loading-page').style.display = 'none'
+    }
+    
+})
